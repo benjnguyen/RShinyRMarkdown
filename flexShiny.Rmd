@@ -65,7 +65,8 @@ fluidRow(
   numericInput("rfr", "Risk-free %", .5, min = 0, max = 5, step = 0.01))
 )
 
-actionButton("go", "Submit")
+# If we wanted to issue a button, uncomment here
+# actionButton("go", "Submit")
 ```
 
 
@@ -83,6 +84,12 @@ individual_stocks <- reactive({
 })
 
 
+# If we used the button under the UI, we would need an eventReactive
+# This is one such way to use an eventReactive
+# The benefit to an eventReactive is to prevent the app from computing intermediate changes
+# that are not the final change that the user wants to observe.
+# Note that we should use an eventReactive everywhere that performs a calculation w.r.t. a user input.
+
 #individual_stocks <- eventReactive(input$go, {
 #  year <- input$year
 #  req(input$stock1)
@@ -96,6 +103,7 @@ individual_stocks <- reactive({
 #})
 
 portfolio_growth <- reactive({
+  # Weights need to sum to 1.
   w <- c(input$w1/100, input$w2/100, 1-(input$w1+input$w2)/100)
   dollar_growth <- Return.portfolio(individual_stocks(), weights = w, wealth.index = TRUE)
 })
@@ -108,6 +116,8 @@ sharpe_ratio <- reactive({
   sharpe[1,]
 })
 
+# We calculate this because we want to compare it to our portfolio's Sharpe Ratio
+# This serves as an alternate reality where we invest in the S&P500 as opposed to the stocks that we chose.
 sp500_sharpe_ratio <- reactive({
   year <- input$year
   sp500 <- monthly_stock_returns('spy', year)
@@ -126,9 +136,11 @@ Row {data-height = 600}
 
 ### Growth of $1
 
-```{r}
-dygraphOutput("dygraphDollarGrowth")
 
+```{r}
+# Note that the way we name our plots is not from an assigment operator.
+dygraphOutput("dygraphDollarGrowth")
+# Also note that the rendering function uses a reactive() as a parameter.
 output$dygraphDollarGrowth <- renderDygraph({
   dygraph(portfolio_growth(), main = "Growth of $1 Invested in Your Portfolio") %>%
     dyAxis("y", label = "$") %>%

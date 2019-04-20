@@ -12,3 +12,6 @@ The code is not my own work (although there are some very slight modifications t
 
 See webpage for deployed application:
 https://benjnguyen.shinyapps.io/flexshiny/
+
+Future Reference:
+To deploy an app, use rsconnect::deployApp("directory for .rmd file here")

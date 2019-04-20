@@ -8,3 +8,7 @@ It also introduces a way to scrape financial data using a ticker symbol represen
 Disclaimer: 
 Followed along with Beyond Static Reports With R Markdown | RStudio Webinar - 2017. 
 The code is not my own work (although there are some very slight modifications to make the app run); it serves as a personal tutorial for how to develop more complicated web applications in R. What I have done is re-purposed the code for .R file as opposed to an .RMD file. The difference is in syntax and placement of lines of code.
+
+
+See webpage for deployed application:
+https://benjnguyen.shinyapps.io/flexshiny/

@@ -12,7 +12,7 @@ The code is not entirely my own work (although there are some very slight modifi
 
 What I have done is re-purposed the code for .R file as opposed to an .RMD file. The difference is in syntax and placement of lines of code. I've also used this opportunity to learn how to deploy an app into a webpage, which is attached below. It will take a moment to process as it has to scrape the data from yahoo and perform initial calculations based on default values for parameters. 
 
-An 'improvement' upon the application was added to impose that the portf. % sum to 100%. Whether this is this is correct in theory is besides the point; it is an exercise in having dynamically adjusted numeric inputs.
+An 'improvement' upon the application was added to impose that the portf. % sum to 100%. Whether this is this is correct in theory is besides the point; it is an exercise in having dynamically adjusted numeric inputs. The app is currently undeployed due to connectivity issues, but the relevant code is found under SharpeRatio.Rmd
 
 
 See webpage for deployed application:
